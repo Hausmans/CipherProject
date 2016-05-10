@@ -4,5 +4,5 @@ public interface RSA {
 
 	public BigInteger encrypt(String input);
 
-	public BigInteger decrypt(BigInteger input);
+	public String decrypt(BigInteger input, BigInteger n);
 }

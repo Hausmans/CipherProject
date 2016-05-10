@@ -1,0 +1,31 @@
+import java.math.BigInteger;
+import java.util.Random;
+
+public class Transmit implements RSA {
+	
+	private BigInteger p;
+	private BigInteger q;
+
+	public BigInteger stringConversion(String input) {
+		String text = input;
+		String number = "";
+		while (text.length() > 0) {
+				number += text.charAt(0) - 22;
+			text.substring(1);
+		}
+		return new BigInteger(number);
+	}
+
+	public BigInteger encrypt(String input) {
+		BigInteger number = stringConversion(input);
+		p = BigInteger.probablePrime(10000, new Random());
+		q = BigInteger.probablePrime(10000, new Random());
+		System.out.println(number);
+		return null;
+	}
+
+	public BigInteger decrypt(BigInteger input) {
+		return null;
+	}
+
+}

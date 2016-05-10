@@ -1,0 +1,22 @@
+import java.math.BigInteger;
+
+public class Receive implements RSA {
+
+	private BigInteger privateKey;
+	
+	private BigInteger privateKey(BigInteger publicKey, BigInteger n){
+		privateKey = publicKey.modInverse(n);
+		return null;
+	}
+	
+	public BigInteger encrypt(String input) {
+		return null;
+
+	}
+
+	public BigInteger decrypt(BigInteger input) {
+		return null;
+
+	}
+
+}
