@@ -1,18 +1,17 @@
 import java.math.BigInteger;
 
 public class Transmit implements RSA {
-	
+
 	public static BigInteger publicKey = new BigInteger("65537");
-	
-	public Transmit(){
+
+	public Transmit() {
 	}
 
 	private BigInteger stringConversion(String input) {
 		String text = input;
 		String number = "";
-		while (text.length() > 0) {
-				number += text.charAt(0) - 22;
-			text.substring(1);
+		for (int i = 0; i < text.length(); i++) {
+			number += text.charAt(i) - 22;
 		}
 		return new BigInteger(number);
 	}

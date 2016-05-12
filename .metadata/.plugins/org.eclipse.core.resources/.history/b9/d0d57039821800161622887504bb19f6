@@ -1,0 +1,29 @@
+import java.math.BigInteger;
+
+public class Transmit implements RSA {
+	
+	public static BigInteger publicKey = new BigInteger("7");
+	
+	public Transmit(){
+	}
+
+	private BigInteger stringConversion(String input) {
+		String text = input;
+		String number = "";
+		while (text.length() > 0) {
+				number += text.charAt(0) - 22;
+			text.substring(1);
+		}
+		return new BigInteger(number);
+	}
+
+	public String decrypt(BigInteger input, BigInteger n) {
+		return null;
+	}
+
+	public BigInteger encrypt(String input, BigInteger n) {
+		BigInteger number = stringConversion(input);
+		return number.modPow(publicKey, n);
+	}
+
+}
