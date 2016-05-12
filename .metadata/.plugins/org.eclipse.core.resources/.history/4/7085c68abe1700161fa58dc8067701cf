@@ -1,0 +1,39 @@
+import java.math.BigInteger;
+import java.util.Random;
+
+public class Receive implements RSA {
+
+	private BigInteger p;
+	private BigInteger q;
+	private BigInteger totient;
+	
+	public BigInteger n;
+	
+	private BigInteger privateKey;
+	
+	public Receive(BigInteger publicKey, BigInteger totient){
+		privateKey(publicKey, totient);
+	}
+	
+	private String integerConversion(BigInteger input){
+		return null;
+	}
+	
+	private void privateKey(BigInteger publicKey, BigInteger totient){
+		p = BigInteger.probablePrime(10000, new Random());
+		q = BigInteger.probablePrime(10000, new Random());
+		n = p.multiply(q);
+		totient = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
+		privateKey = publicKey.modInverse(totient);
+	}
+	
+	public BigInteger encrypt(String input) {
+		return null;
+	}
+
+	public String decrypt(BigInteger input, BigInteger n) {
+		BigInteger temp = input.modPow(privateKey, n);
+		return integerConversion(temp);
+	}
+
+}

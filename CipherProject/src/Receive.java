@@ -1,29 +1,49 @@
 import java.math.BigInteger;
+import java.util.Random;
 
 public class Receive implements RSA {
 
+	private BigInteger p;
+	private BigInteger q;
+	private BigInteger totient;
 	private BigInteger privateKey;
 	
-	public Receive(BigInteger publicKey, BigInteger n){
-		privateKey(publicKey, n);
+	private BigInteger n;
+	
+	public Receive(BigInteger publicKey){
+		privateKey(publicKey);
 	}
 	
-	public integerConversion(){
-		
+	private String integerConversion(BigInteger input){
+		String numbers = input.toString();
+		String text = "";
+		for(int i=0; i<numbers.length()-2;i+=2){
+			text+=(char)(Integer.parseInt(numbers.substring(i, i+2)+22));
+		}
+		return text;
 	}
 	
-	private BigInteger privateKey(BigInteger publicKey, BigInteger n){
-		privateKey = publicKey.modInverse(n);
-		return null;
+	public BigInteger getN(){
+		return n;
 	}
 	
-	public BigInteger encrypt(String input) {
+	private void privateKey(BigInteger publicKey){
+		do{
+			p = BigInteger.probablePrime(10, new Random());
+			q = BigInteger.probablePrime(10, new Random());
+			n = p.multiply(q);
+			totient = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
+		}while(Transmit.publicKey.mod(totient)!=BigInteger.ZERO);
+		privateKey = publicKey.modInverse(totient);
+	}
+	
+	public BigInteger encrypt(String input, BigInteger n) {
 		return null;
 	}
 
 	public String decrypt(BigInteger input, BigInteger n) {
 		BigInteger temp = input.modPow(privateKey, n);
-		return ;
+		return integerConversion(temp);
 	}
 
 }

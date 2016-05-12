@@ -1,0 +1,10 @@
+
+public class Test {
+
+	public static void main (String args[] ){
+		Transmit test = new Transmit();
+		Receive test2 = new Receive(test.publicKey);
+		System.out.println(test.encrypt("Hi", test2.getN()).toString());
+		
+	}
+}
